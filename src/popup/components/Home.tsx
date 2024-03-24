@@ -85,7 +85,7 @@ const Home: React.FC = () => {
         storageContext?.followingRank && <UserRankEngagement />
       }
       {
-        storageContext?.userLimit && storageContext?.userLimit.length && <UserLimit />
+        storageContext?.userLimit && storageContext?.userLimit.length !== 0 && <UserLimit />
       }
       <hr className='w-full mt-[12px] mb-[12px]' />
       <Button type='primary' onClick={handleButtonClick} className=' bg-[#1677ff]'>
