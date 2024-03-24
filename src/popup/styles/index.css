@@ -34,3 +34,6 @@ body {
 .ant-collapse-content{
   background-color: #d2e0fa !important;
 }
+.ant-collapse-expand-icon{
+  color: white !important;
+}

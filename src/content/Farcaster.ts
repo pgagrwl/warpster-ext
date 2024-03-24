@@ -13,7 +13,6 @@ export function Farcaster(mutations: any){
               const userText = cast.childNodes[1]?.textContent; // Optional chaining for safety
               if (userText?.includes("@")) {
                 const user = userText.split("@")[1];
-                console.log(user);
                 
                 // const userFollowinRank = await getFollowingRank(user);
                 // const userEngagementRank = await getEngagementRank(user)

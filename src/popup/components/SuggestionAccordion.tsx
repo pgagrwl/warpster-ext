@@ -50,7 +50,6 @@ const SuggestionAccordion: React.FC = () => {
                         requestData: item,
                         responseData: response.data.data
                     })).catch((error) => {
-                        console.log(error);
                         return null
                     });
                 } catch (error) {
@@ -73,20 +72,18 @@ const SuggestionAccordion: React.FC = () => {
                         requestData: item,
                         responseData: response.data.data
                     })).catch(error => {
-                        console.log(error);
                         return null
                     });
                 } catch (error) {
                     return null
                 }
             }).filter((item: any) => item !== null)
-            const awaitEngagementResponse = await (await Promise.all(suggestionEngagementPromises)).filter(item => item !== null)
+            const awaitEngagementResponse = (await Promise.all(suggestionEngagementPromises)).filter(item => item !== null)
 
 
             storageContext?.setSuggestionExtended({
                 suggestionFollowing: awaitFollowingResponse, suggestionEngagement: awaitEngagementResponse
             })
-            console.log(awaitFollowingResponse, awaitEngagementResponse);
 
         })()
     }, [])
@@ -94,7 +91,7 @@ const SuggestionAccordion: React.FC = () => {
         return storageContext?.suggestionFollowing?.map((item: any, index: number) => {
             return ({
                 key: index + 1,
-                label: <div className=' text-white'>{item.requestData.fname}</div>,
+                label: <div className=' text-white font-mono'>{item.requestData.fname}</div>,
                 children: <div>
                     <div>
                         {item.username}
@@ -102,7 +99,7 @@ const SuggestionAccordion: React.FC = () => {
                     <div>
                         <div className=' font-mono text-[18px]'>
                             <div className=' text-[12px] font-semibold'>
-                                Bio
+                                Bio:
                             </div>
                             <div>
                                 {item.responseData.bio}
@@ -110,7 +107,7 @@ const SuggestionAccordion: React.FC = () => {
                         </div>
                         <div className=' font-mono text-[18px]'>
                             <div className=' text-[12px] font-semibold'>
-                                Display Name
+                                Display Name:
                             </div>
                             <div>
                                 {item.responseData.display_name}
@@ -118,7 +115,7 @@ const SuggestionAccordion: React.FC = () => {
                         </div>
                         <div className=' font-mono text-[18px]'>
                             <div className=' text-[12px] font-semibold'>
-                                Followers Count
+                                Followers Count:
                             </div>
                             <div>
                                 {item.responseData.follower_count}
@@ -126,7 +123,7 @@ const SuggestionAccordion: React.FC = () => {
                         </div>
                         <div className=' font-mono text-[18px]'>
                             <div className=' text-[12px] font-semibold'>
-                                Following Count
+                                Following Count:
                             </div>
                             <div>
                                 {item.responseData.following_count}
@@ -134,7 +131,7 @@ const SuggestionAccordion: React.FC = () => {
                         </div>
                         <div className=' font-mono text-[18px]'>
                             <div className=' text-[12px] font-semibold'>
-                                Verified Address Count
+                                Verified Address Count:
                             </div>
                             <div>
                                 {item.responseData.verifications.length}
@@ -149,22 +146,57 @@ const SuggestionAccordion: React.FC = () => {
         return storageContext?.suggestionEngagement?.map((item: any, index: number) => {
             return ({
                 key: index + 1,
-                label: <div className=' text-white'>{item.fname}</div>,
+                label: <div className=' text-white font-mono'>{item.requestData.fname}</div>,
                 children: <div>
-                    <div className='flex gap-3'>
-                        <div>
-                            Username:
+                <div>
+                    {item.username}
+                </div>
+                <div>
+                    <div className=' font-mono text-[18px]'>
+                        <div className=' text-[12px] font-semibold'>
+                            Bio:
                         </div>
                         <div>
-                            {item.username}
+                            {item.responseData.bio}
                         </div>
                     </div>
-                    <Button type='primary' className=' bg-[#2d2deec9]'>Details</Button>
-                </div>,
+                    <div className=' font-mono text-[18px]'>
+                        <div className=' text-[12px] font-semibold'>
+                            Display Name:
+                        </div>
+                        <div>
+                            {item.responseData.display_name}
+                        </div>
+                    </div>
+                    <div className=' font-mono text-[18px]'>
+                        <div className=' text-[12px] font-semibold'>
+                            Followers Count:
+                        </div>
+                        <div>
+                            {item.responseData.follower_count}
+                        </div>
+                    </div>
+                    <div className=' font-mono text-[18px]'>
+                        <div className=' text-[12px] font-semibold'>
+                            Following Count:
+                        </div>
+                        <div>
+                            {item.responseData.following_count}
+                        </div>
+                    </div>
+                    <div className=' font-mono text-[18px]'>
+                        <div className=' text-[12px] font-semibold'>
+                            Verified Address Count:
+                        </div>
+                        <div>
+                            {item.responseData.verifications.length}
+                        </div>
+                    </div>
+                </div>
+            </div>
             })
         })
     }, [storageContext?.suggestionEngagement])
-    console.log(suggestionEngagementItems, suggestionFollowingItems);
     return (
         <>
             <div className='flex flex-col gap-3'>
