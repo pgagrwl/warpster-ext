@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --warpster-main-color: #181818;
+  --warpster-main-color-light: #f6fff2;
+  --warpster-main-color-dark: #163a24;
+  --warpster-text-color: #f6fff2;
+  --warpster-bg-color: #141414;
+}
+
+body {
+  width: 375px;
+  height: 600px;
+  color: var(--warpster-text-color);
+  background-color: var(--warpster-bg-color);
+  margin: 0;
+  padding: 12px;
+}
+.fc-authkit-profile-button button {
+  color: white;
+}
+.fc-authkit-profile-button button svg path {
+  stroke: white;
+}
+.ant-progress-text{
+  font-family: monospace;
+  color: white;
+}
