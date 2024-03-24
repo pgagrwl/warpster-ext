@@ -1,25 +1,34 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "manifest_version": 1,
+  "name": "Warpster",
+  "version": "1.0.0",
+  "description": "Warpster description",
+  "icons": {
+    "16": "logo192.png",
+    "48": "logo512.png",
+    "128": "logo.png"
+  },
+  "background": {
+    "service_worker": "./static/js/background.js"
+  },
+  "content_scripts": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "matches": [
+        "*://warpcast.com/*",
+        "*://*.warpcast.com/*"
+      ],
+      "js": ["./static/js/content.js"],
+      "css": ["styles.css", "tooltip.css"]
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": ["activeTab", "storage", "notifications"],
+  "web_accessible_resources": [
+    {
+      "resources": ["logo.png"],
+      "matches": ["https://warpcast.com/*"]
+    }
+  ]
 }
