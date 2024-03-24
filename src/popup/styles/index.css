@@ -28,3 +28,9 @@ body {
   font-family: monospace;
   color: white;
 }
+.ant-collapse-header{
+  color: white;
+}
+.ant-collapse-content{
+  background-color: #d2e0fa !important;
+}

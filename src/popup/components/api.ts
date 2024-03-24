@@ -50,3 +50,37 @@ export async function getEngagementRank(userName: string) {
   const result = await axios.request(config)
   return result.data.result[0]
 }
+
+export async function getSuggestionExtendedFollowing(username: string) {
+  const data = JSON.stringify([
+    username
+  ])
+  const config = {
+    url: `${LOCAL_HOST_API_URL}api/suggestion-extended-following`,
+    method: 'post',
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    data: data
+  }
+  const result = await axios.request(config)
+  return result.data.result
+}
+
+export async function getSuggestionExtendedEngagement(username: string) {
+  const data = JSON.stringify([
+    username
+  ])
+  const config = {
+    url: `${LOCAL_HOST_API_URL}api/suggestion-extended-following`,
+    method: 'post',
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    data: data
+  }
+  const result = await axios.request(config)
+  return result.data.result
+}

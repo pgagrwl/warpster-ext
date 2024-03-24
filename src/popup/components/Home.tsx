@@ -23,7 +23,6 @@ const Home: React.FC = () => {
         const userFid = await chrome.storage.local.get("userFid");
         const username = await chrome.storage.local.get("username");
         const userLimit = await getUserLimits(userFid?.userFid as number);
-        console.log(userFid, username);
         const followingRank = await getFollowingRank(username?.username)
         const engagementResult = await getEngagementRank(username?.username)
         storageContext?.setUserDetail({
@@ -59,9 +58,6 @@ const Home: React.FC = () => {
           Hello, {storageContext.username}!.
         </div> :
           <SignInButton onSuccess={async ({ fid, username }) => {
-            console.log(`Hello, ${username}! Your fid is ${fid}.`)
-            const resp = await getUserLimits(fid as number);
-            console.log(resp);
             const userLimit = await getUserLimits(fid as number);
             const followingRank = await getFollowingRank(username as string)
             const engagementResult = await getEngagementRank(username as string)

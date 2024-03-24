@@ -12,7 +12,10 @@ export const LocalStorageContext = createContext<
     followingRank: any;
     setFarcasterResult: any;
     userLimit: any;
-    setUserLimit: any
+    setUserLimit: any;
+    suggestionFollowing: any,
+    suggestionEngagement: any,
+    setSuggestionExtended: any
   }
   | undefined
 >(undefined);
@@ -27,9 +30,10 @@ const App = () => {
     engagementResult: ''
   })
   const [userLimit, setUserLimit] = useState([])
+  const [suggestionExtended, setSuggestionExtended] = useState<any>()
   return (
     <LocalStorageContext.Provider
-      value={{ userFid: userDetail.userFid, username: userDetail.username, setUserDetail, followingRank: farcasterResult.followingRank, engagementResult:  farcasterResult.engagementResult, setFarcasterResult, userLimit, setUserLimit}}
+      value={{ userFid: userDetail.userFid, username: userDetail.username, setUserDetail, followingRank: farcasterResult.followingRank, engagementResult:  farcasterResult.engagementResult, setFarcasterResult, userLimit, setUserLimit, setSuggestionExtended, suggestionFollowing: suggestionExtended?.suggestionFollowing, suggestionEngagement: suggestionExtended?.suggestionEngagement}}
     >
       <Router>
         <Routes>
